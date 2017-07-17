@@ -1,0 +1,16 @@
+en:
+  hello: "Hello world"
+  study:
+    invalid_token: "The token is invalid for this Study"
+    state_invalid: "Invalid study state"
+  study_user:
+    create: "Study user was successfully created."
+  comment_added: "Comment was successfully added"
+  comment_failed: "Comment was not added"
+  activerecord:
+    errors:
+      models:
+        study_user_exercize:
+          attributes:
+            study_user_id:
+              not_study_participant: "does not participate in this study"
