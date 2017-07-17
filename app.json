@@ -1,0 +1,9 @@
+{
+  "name": "NuTool",
+  "description": "",
+  "image": "heroku/ruby",
+  "addons": [
+    "heroku-postgresql"
+  ]
+}
+

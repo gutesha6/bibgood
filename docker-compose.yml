@@ -1,0 +1,46 @@
+web: &app_base
+  build: .
+  command: ./bin/start
+  working_dir: /app/user
+  environment:
+    PORT: 8080
+    DATABASE_URL: 'postgres://postgres:@db:5432/postgres'
+    RAILS_ENV: development
+    RACK_ENV: development
+    SMTP_PORT: 1025
+    SMTP_ADDRESS: mailcatcher
+  env_file:
+    - .env
+    - .env.development
+  ports:
+    - '8080:8080'
+  volumes:
+    - .:/app/user
+  volumes_from:
+    - bundle
+  links:
+    - mailcatcher
+    - db
+test:
+  <<: *app_base
+  command: ./bin/test
+  ports: []
+  env_file:
+    - .env
+    - .env.test
+  environment:
+    DATABASE_URL: 'postgres://postgres:@db:5432/postgres'
+    RAILS_ENV: test
+    RACK_ENV: test
+db:
+  image: postgres
+  volumes:
+    - /var/lib/postgresql/data
+mailcatcher:
+  image: zolweb/docker-mailcatcher
+  ports:
+  - '1080:1080'
+bundle:
+  image: busybox
+  volumes:
+    - /bundle

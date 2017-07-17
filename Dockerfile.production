@@ -1,0 +1,2 @@
+FROM heroku/ruby
+ONBUILD ENV BUNDLE_PATH /app/heroku/ruby/bundle

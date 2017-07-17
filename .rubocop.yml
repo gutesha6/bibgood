@@ -1,0 +1,19 @@
+inherit_from: .rubocop_todo.yml
+
+Documentation:
+  Enabled: false
+Metrics/BlockLength:
+  Enabled: false
+AllCops:
+  TargetRubyVersion: 2.2
+  Include:
+    - Rakefile
+    - config.ru
+  Exclude:
+    - bin/**/*
+    - spec/fixtures/**/*
+    - db/schema.rb
+    - db/seeds.rb
+    - db/migrate/*
+    - config/initializers/*
+    - tmp/**/*
